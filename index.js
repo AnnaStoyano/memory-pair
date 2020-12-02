@@ -34,8 +34,10 @@ class Game {
             let target = e.target;
             let targetCard = target.parentElement;
             if (activeCards.length < 2 && targetCard.classList.contains('card')) {
-                game.findCard(targetCard).addActive();
-                activeCards = game.getActiveCards();
+                if(!targetCard.classList.contains("opened")){
+                    game.findCard(targetCard).addActive();
+                    activeCards = game.getActiveCards();
+                }
             }
             if (activeCards.length == 2) {
                 let isOpened = game.checkEqualCards(activeCards);
